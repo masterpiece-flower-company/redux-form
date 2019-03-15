@@ -140,7 +140,7 @@ const createReduxForm = structure => {
               !deepEqual(this.props.initialValues, nextProps.initialValues)
             ) {
               const keepDirty =
-                nextProps.initialized && this.props.keepDirtyOnReinitialize
+                nextProps.initialized && nextProps.keepDirtyOnReinitialize
               this.props.initialize(nextProps.initialValues, keepDirty, {
                 lastInitialValues: this.props.initialValues
               })
@@ -688,7 +688,7 @@ const createReduxForm = structure => {
 
           let initial = initialValues || stateInitial || empty
 
-          if (shouldUpdateInitialValues) {
+          if (!shouldUpdateInitialValues) {
             initial = stateInitial || empty
           }
 
